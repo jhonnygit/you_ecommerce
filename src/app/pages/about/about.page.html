@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Acerca de Mi</ion-title>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher >
+    <ion-refresher-content
+      pullingText="Updating Feed"
+      refreshingSpinner="circles"
+      refreshingText="Updating...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <div class="about-header">
+    <img src="assets/img/banner-1.webp">
+  </div>
+  <div padding class="about-info">
+    <h4>Jugos </h4>
+
+    <ion-list no-lines>
+      <ion-item>
+        <ion-icon name="calendar" item-left></ion-icon>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="conferenceDate"></ion-datetime>
+      </ion-item>
+    </ion-list>
+
+    <p>
+      vPlanet Commerce is a hosted m-commerce solution in Cloud for online merchants. vPlanet Commerce lowers the barriers to entry into online business for start up and small business and at the same time provide the scalability of enterprise solution while they grow into bigger businesses.
+    </p>
+  </div>
+
+  
+   <ion-fab>
+      <button (click)="callNow()" ion-fab><ion-icon name="call"></ion-icon></button>
+      <button (click)="shareViaEmail()" ion-fab><ion-icon name="mail"></ion-icon></button>
+      <button (click)="shareViaFacebook()" ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button (click)="shareViaWhatsApp()" ion-fab><ion-icon name="logo-whatsapp"></ion-icon></button>
+   </ion-fab> 
+</ion-content>

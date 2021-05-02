@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Tienda de Jugos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-slides pager="true" >
+      <ion-slide *ngFor="let slide of slides">
+        <div class="slide-img-padding">
+          <ion-img [src]="slide.img"></ion-img>
+        </div>
+        <div>
+          <h3 [innerHTML]="slide.titulo"> </h3>
+        </div>        
+      </ion-slide>  
+    </ion-slides> 
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button expand="full"
+                    color="primary"
+                    shape="round"
+                    class="btn-primary"
+                    (click)="IniciarSession()"
+                    *ngIf="!isLoggedin()">
+          Iniciar Session
+        </ion-button>
+      </ion-col>      
+    </ion-row>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button expand="full"
+                    fill="clear" routerLink="/registro"
+                    *ngIf="!isLoggedin()">
+          <ion-label color="dark">Crear cuenta</ion-label>
+        </ion-button>
+      </ion-col>      
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button expand="full"
+                    color="primary"
+                    shape="round"
+                    class="btn-primary"
+                    (click)="cerrarSession()"
+                    *ngIf="isLoggedin()">
+          Cerrar Session
+        </ion-button>
+      </ion-col>      
+    </ion-row>
+
+  </ion-grid>
+</ion-footer>
+

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Catalogo de Jugos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="(cartItemCount|async)!==0">
+  <ion-fab-button (click)="readCart()">
+    <div class="cart-length">{{cartItemCount | async}} </div>
+    <ion-icon name="cart" class="cart-icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab> 
+
+<ion-grid>
+  <ion-row>
+    <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let p of products" class="line">
+      <ion-row>
+        <ion-col size="12">
+          <img [src]="p.thumnail">
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>
+            {{p.name}}-{{p.category.name}}
+          </ion-label>
+          <ion-label color="secondary">
+            <h5>{{p.price | currency:'USD'}} </h5>
+          </ion-label>
+          <label color="tertiary">
+            <p *ngIf="p.discount!=0">{{p.discount}} </p>
+          </label>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button fill="outline" size="small" (click)="addToCart(p)">
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <ion-button fill="outline" size="small">
+            <ion-icon name="heart" class="heart"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-col>
+  </ion-row> 
+</ion-grid>
+
+<ion-infinite-scroll threshold="5%" id="infinite-scroll" (ionInfinite)="loadProductMore($event)">
+  <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Cargando.....">
+
+  </ion-infinite-scroll-content>
+  
+</ion-infinite-scroll>
+
+</ion-content>

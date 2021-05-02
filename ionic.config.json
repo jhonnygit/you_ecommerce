@@ -1,0 +1,8 @@
+{
+  "name": "youecommerce",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
